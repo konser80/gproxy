@@ -1,0 +1,24 @@
+{
+  "name": "gproxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^3.2.1",
+    "dayjs": "^1.10.6",
+    "express": "^4.17.1",
+    "google-spreadsheet": "^3.1.15",
+    "notify": "github:konser80/notify",
+    "tools": "github:konser80/tools"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-plugin-airbnb-base": "^0.0.1-security",
+    "eslint-plugin-import": "^2.24.0"
+  }
+}

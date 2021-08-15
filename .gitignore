@@ -1,0 +1,19 @@
+# Logs
+logs
+logs/
+*.log
+
+# Dependency directories
+node_modules/
+
+# System junk
+.DS_Store
+
+# Private
+config.js
+key*.json
+
+# Other
+old*
+package-lock.json
+test*.*
