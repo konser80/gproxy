@@ -51,7 +51,7 @@ async function getRecords(req) {
     data.forEach((row) => {
       Object.keys(row).forEach((key) => {
         const nk = `gsx$${key}`;
-        const val = row[key];
+        const val = row[key] || '';
         row[nk] = { $t: val };
         delete row[key];
       });
