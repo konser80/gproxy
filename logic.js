@@ -19,6 +19,8 @@ async function getRecords(req) {
   if (!req.query.doc) return {};
   if (!req.query.sheet) return {};
 
+  const gformat = (req.query.format === 'google');
+
   const docpath = req.query.doc;
   const { sheet } = req.query;
 
@@ -33,7 +35,7 @@ async function getRecords(req) {
     return {};
   }
 
-  const data = [];
+  let data = [];
   const headers = global.google.doc[docpath].sheetsByTitle[sheet].headerValues;
   raw.forEach((row) => {
     const rec = {};
@@ -42,6 +44,20 @@ async function getRecords(req) {
     });
     data.push(rec);
   });
+
+  if (gformat) {
+    console.debug('google format');
+
+    data.forEach((row) => {
+      Object.keys(row).forEach((key) => {
+        const nk = `gsx$${key}`;
+        const val = row[key];
+        row[nk] = { $t: val };
+        delete row[key];
+      });
+    });
+    data = { feed: { entry: data } };
+  }
 
   if (DEBUG) console.debug(data);
   return data;
